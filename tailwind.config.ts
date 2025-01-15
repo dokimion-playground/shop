@@ -75,11 +75,11 @@ export default {
           to: {
             transfrom: "translateX(0%)",
           },
-          animation: {
-            appear: "appear 1s ease-in-out",
-            slide: "slide 750s ease-in-out",
-          },
         },
+      },
+      animation: {
+        appear: "appear 1s ease-in-out",
+        slide: "slide 750s ease-in-out",
       },
     },
   },
