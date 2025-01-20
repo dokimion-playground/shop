@@ -8,6 +8,9 @@ import {
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "@/components/ui/form";
+import { InputWithLabel } from "@/components/inputs/InputWithLabel";
+import { Button } from "@/components/ui/button";
+import { TextAreaWithLabel } from "@/components/inputs/TextAreaWithLabel";
 
 type Props = {
   customer?: selectCustomerSchemaType;
@@ -47,9 +50,67 @@ export default function CustomerForm({ customer }: Props) {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(submitForm)}
-            className="flex flex-col sm:flex-row gap-4 sm:gap-8"
+            className="flex flex-col md:flex-row gap-4 md:gap-8"
           >
-            <p>{JSON.stringify(form.getValues())}</p>
+            <div className="flex flex-col gap-4 w-full max-w-xs">
+              <InputWithLabel<insertCustomerSchemaType>
+                fieldTitle="First Name"
+                nameInSchema="firstName"
+              />
+              <InputWithLabel<insertCustomerSchemaType>
+                fieldTitle="Last Name"
+                nameInSchema="lastName"
+              />
+              <InputWithLabel<insertCustomerSchemaType>
+                fieldTitle="Address 1"
+                nameInSchema="address1"
+              />
+              <InputWithLabel<insertCustomerSchemaType>
+                fieldTitle="Address 2"
+                nameInSchema="address2"
+              />
+              <InputWithLabel<insertCustomerSchemaType>
+                fieldTitle="City"
+                nameInSchema="city"
+              />
+            </div>
+            <div className="flex flex-col gap-4 w-full max-w-xs">
+              <InputWithLabel<insertCustomerSchemaType>
+                fieldTitle="Zip Code"
+                nameInSchema="zip"
+              />
+              <InputWithLabel<insertCustomerSchemaType>
+                fieldTitle="Email"
+                nameInSchema="email"
+              />
+              <InputWithLabel<insertCustomerSchemaType>
+                fieldTitle="Phone"
+                nameInSchema="phone"
+              />
+              <TextAreaWithLabel<insertCustomerSchemaType>
+                fieldTitle="Phone"
+                nameInSchema="phone"
+              />
+              <div className="flex gap-2">
+                <Button
+                  className="w-3/4"
+                  type="submit"
+                  variant="default"
+                  title="Save"
+                >
+                  저장
+                </Button>
+
+                <Button
+                  type="button"
+                  variant="destructive"
+                  title="Reset"
+                  onClick={() => form.reset(defaultValues)}
+                >
+                  초기화
+                </Button>
+              </div>
+            </div>
           </form>
         </Form>
       </div>
