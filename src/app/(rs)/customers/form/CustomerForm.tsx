@@ -11,6 +11,8 @@ import { Form } from "@/components/ui/form";
 import { InputWithLabel } from "@/components/inputs/InputWithLabel";
 import { Button } from "@/components/ui/button";
 import { TextAreaWithLabel } from "@/components/inputs/TextAreaWithLabel";
+import { SelectWithLabel } from "@/components/inputs/SelectWithLabel";
+import StatesArray from "@/constants/StatesArray";
 
 type Props = {
   customer?: selectCustomerSchemaType;
@@ -73,6 +75,11 @@ export default function CustomerForm({ customer }: Props) {
                 fieldTitle="City"
                 nameInSchema="city"
               />
+              <SelectWithLabel<insertCustomerSchemaType>
+                fieldTitle="State"
+                nameInSchema="state"
+                data={StatesArray}
+              />
             </div>
             <div className="flex flex-col gap-4 w-full max-w-xs">
               <InputWithLabel<insertCustomerSchemaType>
@@ -88,8 +95,9 @@ export default function CustomerForm({ customer }: Props) {
                 nameInSchema="phone"
               />
               <TextAreaWithLabel<insertCustomerSchemaType>
-                fieldTitle="Phone"
-                nameInSchema="phone"
+                fieldTitle="Notes"
+                nameInSchema="notes"
+                className="h-40"
               />
               <div className="flex gap-2">
                 <Button
